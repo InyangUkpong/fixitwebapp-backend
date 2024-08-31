@@ -18,7 +18,7 @@ app.use("/api/artisans", artisanRoutes);
 app.use("/api/booking", bookingRoutes);
 
 // Database connection
-const PORT = process.env.PORT || 8080;
+const PORT = process.env.PORT || 3000;
 const MONGO_URI = process.env.MONGO_URI;
 
 connectDB(MONGO_URI);
