@@ -17,6 +17,11 @@ app.use("/api/users", userRoutes);
 app.use("/api/artisans", artisanRoutes);
 app.use("/api/booking", bookingRoutes);
 
+// Testing Section
+app.get('/', (req, res) => {
+  res.send('Hello from Node API Server');
+});
+
 // Database connection
 const PORT = process.env.PORT || 3000;
 const MONGO_URI = process.env.MONGO_URI;
