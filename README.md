@@ -27,7 +27,7 @@ Software Engineer (Backend)
 
 
 ## 🛠 Skills
-NodeJs, Django, MongoDB, PostgreSQL, Docker, Postman, VSCode, Git, Github
+NodeJs, Express, Django, MongoDB, PostgreSQL, Docker, Postman, VSCode, Git, Github
 
 ## License
 
