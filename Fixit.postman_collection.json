@@ -1,0 +1,387 @@
+{
+	"info": {
+		"_postman_id": "967f3d2e-ca5a-47b3-8637-1da404d8d6c0",
+		"name": "Fixit",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "6718885"
+	},
+	"item": [
+		{
+			"name": "Authentication",
+			"item": [
+				{
+					"name": "Register",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.environment.set(\"jwt\", pm.response.json().token);"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"email\": \"janedoe@example.com\",\n  \"password\": \"test1234\",\n  \"name\": \"Jane Doe\",\n  \"role\": \"client\",\n  \"location\": \"Lagos, Nigeria\"\n}\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:3000/api/auth/register",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"auth",
+								"register"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Login",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.environment.set(\"jwt\", pm.response.json().token);"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"email\": \"janedoe@example.com\",\n    \"password\": \"test1234\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/auth/login",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"auth",
+								"login"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Users",
+			"item": [
+				{
+					"name": "get profile",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{jwt}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/users/profile",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"users",
+								"profile"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Artisan",
+			"item": [
+				{
+					"name": "create artisan",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{jwt}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"job_title\": \"Appliance Technician\",\n  \"category\": \"Appliance Repair\",\n  \"bio\": \"Experienced technician with over 5 years in appliance repair, specializing in refrigerators and washing machines.\",\n  \"services\": [\n    \"Refrigerator Repair\",\n    \"Washing Machine Repair\",\n    \"Dishwasher Installation\"\n  ]\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/artisans",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"artisans"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get all artisans",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{jwt}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/artisans",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"artisans"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "success",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{url}}/artisans",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"artisans"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "459"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"1cb-9EGUswF/mOT7tnLnc1iOG+YRP5o\""
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 29 Aug 2024 21:24:52 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"artisans\": [\n        {\n            \"_id\": \"66d0ddc175b65e0d7bd89f4d\",\n            \"user\": {\n                \"_id\": \"66d0d7242c46ee925ec3b7e7\",\n                \"name\": \"John Doe\",\n                \"location\": \"Lagos, Nigeria\",\n                \"profile_image\": \"default.jpg\"\n            },\n            \"job_title\": \"Appliance Technician\",\n            \"category\": \"Appliance Repair\",\n            \"bio\": \"Experienced technician with over 5 years in appliance repair, specializing in refrigerators and washing machines.\",\n            \"services\": [\n                \"Refrigerator Repair\",\n                \"Washing Machine Repair\",\n                \"Dishwasher Installation\"\n            ],\n            \"rating\": 0,\n            \"__v\": 0\n        }\n    ]\n}"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Booking",
+			"item": [
+				{
+					"name": "create booking",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{jwt}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"artisan\": \"66d0ddc175b65e0d7bd89f4d\",\n    \"date\": \"Thu Aug 30 2024 14:27:03 GMT+0100\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/booking",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"booking"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get all my booking (client)",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{jwt}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/booking/client-bookings",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"booking",
+								"client-bookings"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "success",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{url}}/booking/client-bookings",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"booking",
+										"client-bookings"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "554"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"22a-r9R+6tYMnGiRKfZwsYxSVy9/6KM\""
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 29 Aug 2024 21:43:54 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"bookings\": [\n        {\n            \"_id\": \"66d0e7ec2d69aeaa332da53d\",\n            \"client\": \"66d0e54b92a3906444c3dbef\",\n            \"artisan\": {\n                \"_id\": \"66d0ddc175b65e0d7bd89f4d\",\n                \"user\": {\n                    \"_id\": \"66d0d7242c46ee925ec3b7e7\",\n                    \"name\": \"John Doe\",\n                    \"profile_image\": \"default.jpg\"\n                },\n                \"job_title\": \"Appliance Technician\",\n                \"category\": \"Appliance Repair\",\n                \"bio\": \"Experienced technician with over 5 years in appliance repair, specializing in refrigerators and washing machines.\",\n                \"services\": [\n                    \"Refrigerator Repair\",\n                    \"Washing Machine Repair\",\n                    \"Dishwasher Installation\"\n                ],\n                \"rating\": 0,\n                \"__v\": 0\n            },\n            \"date\": \"2024-08-30T13:27:03.000Z\",\n            \"__v\": 0\n        }\n    ]\n}"
+						}
+					]
+				},
+				{
+					"name": "get a vendors booked dates",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/booking/vendor-booked-dates/66d0ddc175b65e0d7bd89f4d",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"booking",
+								"vendor-booked-dates",
+								"66d0ddc175b65e0d7bd89f4d"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
